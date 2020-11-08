@@ -2,6 +2,7 @@ const path = require("path");
 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { HotModuleReplacementPlugin } = require("webpack");
 
 module.exports = {
   entry: "./js/entry.js",
@@ -10,6 +11,11 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   mode: "development",
+  devServer: {
+    contentBase: "./dist",
+    port: 3030,
+    hot: true,
+  },
   module: {
     rules: [
       {
@@ -47,6 +53,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: "index.html",

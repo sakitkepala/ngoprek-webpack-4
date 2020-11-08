@@ -5,6 +5,12 @@ import "popper.js";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import "../image/image.jpg";
+import "../image/webpack-logo.png";
+import "../video/video.mp4";
+
+import "../css/style.css";
+
 $("#logo").attr("src", info.logo);
 $("#title").text(info.title);
 

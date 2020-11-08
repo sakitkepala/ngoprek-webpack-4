@@ -1,0 +1,8 @@
+{
+    "logo":"./image/webpack-logo.png",
+    "title":"Webpack Practice Proj.",
+    "video":"./video/video.mp4", 
+    "image":"./image/image.jpg", 
+    "city":"London",
+    "description":"Tower Bridge."
+}

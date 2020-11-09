@@ -8,7 +8,10 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
-  entry: "./js/entry.js",
+  entry: {
+    page: "./js/entry.js",
+    card: "./js/card.js",
+  },
   output: {
     filename: "bundle.[name].js",
     path: path.resolve(__dirname, "dist"),
@@ -17,10 +20,10 @@ module.exports = {
   // ? apakah optimization cuma bisa berlaku ketika production saja?
   mode: "production",
   optimization: {
-    minimizer: [
-      new OptimizeCssAssetsPlugin(),
-      new UglifyJsPlugin(),
-    ]
+    splitChunks: {
+      chunks: "all",
+    },
+    minimizer: [new OptimizeCssAssetsPlugin(), new UglifyJsPlugin()],
   },
   devServer: {
     contentBase: "./dist",

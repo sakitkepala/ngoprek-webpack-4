@@ -7,5 +7,14 @@ $("#img").attr("src", info.image);
 $(".card-title").text(info.city);
 $(".card-text").text(info.description);
 
-import append_video from "./video";
-append_video();
+$("#video_btn").click(function () {
+  if (!$("#video").length) {
+    import(/* webpackChunkName: "videoFunc" */ "./video")
+      .then(function (module) {
+        module.default();
+      })
+      .catch(function (e) {
+        console.log(e);
+      });
+  }
+});

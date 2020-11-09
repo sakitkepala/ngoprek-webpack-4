@@ -4,14 +4,24 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { HotModuleReplacementPlugin } = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   entry: "./js/entry.js",
   output: {
-    filename: "bundle.js",
+    filename: "bundle.[name].js",
     path: path.resolve(__dirname, "dist"),
   },
-  mode: "development",
+  // ? Di contohnya modenya diubah jadi production,
+  // ? apakah optimization cuma bisa berlaku ketika production saja?
+  mode: "production",
+  optimization: {
+    minimizer: [
+      new OptimizeCssAssetsPlugin(),
+      new UglifyJsPlugin(),
+    ]
+  },
   devServer: {
     contentBase: "./dist",
     port: 3030,
